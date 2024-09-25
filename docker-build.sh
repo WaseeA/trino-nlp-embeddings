@@ -20,5 +20,4 @@ docker buildx build \
     -t "$TAG" \
     --build-arg TRINO_VERSION="$TRINO_VERSION" \
     --build-arg VERSION="$VERSION" \
-    --push \
     .
