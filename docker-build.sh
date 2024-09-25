@@ -16,7 +16,7 @@ echo "Using VERSION: $VERSION"
 TAG=WaseeA/trino-nlp-embeddings:$VERSION
 
 docker buildx build \
-    --platform linux/amd64,linux/arm64 \
+    --platform linux/amd64 \
     -t "$TAG" \
     --build-arg TRINO_VERSION="$TRINO_VERSION" \
     --build-arg VERSION="$VERSION" \
