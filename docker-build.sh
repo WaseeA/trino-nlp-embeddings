@@ -13,7 +13,7 @@ TRINO_VERSION=$(mvn help:evaluate -Dexpression=dep.trino.version -q -DforceStdou
 echo "Using TRINO_VERSION: $TRINO_VERSION"
 echo "Using VERSION: $VERSION"
 
-TAG=waseedockkerhub9/trino-nlp-embeddings:$VERSION
+TAG=waseedockerhub9/trino-nlp-embeddings:$VERSION
 
 docker buildx build \
     --platform linux/amd64 \
