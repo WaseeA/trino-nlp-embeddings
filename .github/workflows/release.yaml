@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Set execute permission for mvnw
-        run: chmod +x mvnw
+        run: chmod +x ./mvnw
       
       - name: Prepare release
         run: ./mvnw -B release:prepare
