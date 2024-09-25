@@ -45,6 +45,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
+      - name: Pull latest changes
+        run: |
+          git pull origin main || echo "No changes to pull"
+
       - name: Prepare release
         run: ./mvnw -B release:prepare
 
