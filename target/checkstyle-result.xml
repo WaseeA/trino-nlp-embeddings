@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.12.3">
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTransactionHandle.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnectorFactory.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplit.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTableHandle.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPPlugin.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPMetadata.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnector.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConfig.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPColumnHandle.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPRecordSetProvider.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPModule.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplitManager.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/test/java/it/pkg/TestNLPQueries.java">
+</file>
+<file name="/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/test/java/it/pkg/NLPQueryRunner.java">
+</file>
+</checkstyle>

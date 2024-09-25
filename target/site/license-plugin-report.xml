@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<licensePluginReport goal="CHECK" timestamp="1727290559335">
+    <module artifactId="trino-nlp-embeddings" groupId="ai.knorket" version="0.14-SNAPSHOT"/>
+    <files>
+        <file path="src/main/java/it/pkg/NLPColumnHandle.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPConfig.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPConnector.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPConnectorFactory.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPMetadata.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPModule.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPPlugin.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPRecordSetProvider.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPSplit.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPSplitManager.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPTableHandle.java" result="PRESENT"/>
+        <file path="src/main/java/it/pkg/NLPTransactionHandle.java" result="PRESENT"/>
+        <file path="src/test/java/it/pkg/NLPQueryRunner.java" result="PRESENT"/>
+        <file path="src/test/java/it/pkg/TestNLPQueries.java" result="PRESENT"/>
+    </files>
+</licensePluginReport>

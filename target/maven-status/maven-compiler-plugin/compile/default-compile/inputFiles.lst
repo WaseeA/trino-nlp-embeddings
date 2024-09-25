@@ -1,0 +1,12 @@
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPColumnHandle.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPPlugin.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConfig.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplit.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnector.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnectorFactory.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTableHandle.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPModule.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPMetadata.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTransactionHandle.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPRecordSetProvider.java
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplitManager.java

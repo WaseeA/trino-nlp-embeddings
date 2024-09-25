@@ -1,0 +1,16 @@
+#Wed Sep 25 14:56:00 EDT 2024
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPColumnHandle.java=1727283076085
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConfig.java=1727283076096
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnector.java=1727283076093
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPConnectorFactory.java=1727283076098
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPMetadata.java=1727283076095
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPModule.java=1727283076091
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPPlugin.java=1727283076090
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPRecordSetProvider.java=1727283076080
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplit.java=1727283076088
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPSplitManager.java=1727283076082
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTableHandle.java=1727283076089
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/main/java/it/pkg/NLPTransactionHandle.java=1727283076086
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/test/java/it/pkg/NLPQueryRunner.java=1727283076103
+/home/zephyrus/Documents/Knorket.AI/attempt3/trino-plugin-archetype/trino-nlp-embeddings/src/test/java/it/pkg/TestNLPQueries.java=1727283076104
+configuration*?=AB674B15AC62AD066FD1273E76D404D2000DFB38
