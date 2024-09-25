@@ -16,6 +16,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set execute permission for mvnw
+        run: chmod +x ./mvnw
+
       - name: Set up the JDK
         uses: actions/setup-java@v4
         with:
@@ -41,9 +44,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Set execute permission for mvnw
-        run: chmod +x ./mvnw
       
       - name: Prepare release
         run: ./mvnw -B release:prepare
