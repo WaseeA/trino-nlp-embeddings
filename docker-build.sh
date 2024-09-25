@@ -9,6 +9,10 @@ else
     VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 fi
 TRINO_VERSION=$(mvn help:evaluate -Dexpression=dep.trino.version -q -DforceStdout)
+
+echo "Using TRINO_VERSION: $TRINO_VERSION"
+echo "Using VERSION: $VERSION"
+
 TAG=WaseeA/trino-nlp-embeddings:$VERSION
 
 docker buildx build \
