@@ -45,9 +45,6 @@ jobs:
       - name: Set execute permission for mvnw
         run: chmod +x mvnw
       
-      - name: Ensure clean working directory
-        run: git diff-index --quiet HEAD -- || git checkout -- .
-      
       - name: Prepare release
         run: ./mvnw -B release:prepare
 
