@@ -58,7 +58,7 @@ jobs:
 
       - name: Save version number in env
         run: |
-          VERSION=$(grep 'project\\.rel\\..*=' release.properties | cut -d'=' -f2)
+          VERSION=$(grep 'project.rel.ai.knorket\\:trino-nlp-embeddings=' release.properties | cut -d'=' -f2)
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
           echo "Version extracted: ${VERSION}"
 
