@@ -65,6 +65,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: List target directory
+        run: ls -al target/
+
       - name: Run JReleaser
         uses: jreleaser/release-action@v2
         env:
