@@ -1,6 +1,6 @@
 project:
   name: trino-nlp-embeddings
-  version: 1.0.0-alpha
+  # version: 1.0.0-alpha
   description: This is a Trino connector
   license: Apache-2
   java:
