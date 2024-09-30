@@ -58,7 +58,9 @@ jobs:
 
       - name: Save version number in env
         run: |
-          echo "VERSION=$(grep 'project\\.rel\\..*=' release.properties | cut -d'=' -f2)" >> $GITHUB_ENV
+          VERSION=$(grep 'project\\.rel\\..*=' release.properties | cut -d'=' -f2)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "Version extracted: ${VERSION}"
 
       - name: Publish JAR
         run: ./mvnw -B release:perform -Darguments="-Dgpg.skip -Dmaven.deploy.skip=true"
