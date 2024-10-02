@@ -13,7 +13,7 @@ docker run \
   -d \
   --name trino-nlp-embeddings \
   -p 8080:8080 \
-  WaseeA/trino-nlp-embeddings:0.1
+  waseedockerhub9/trino-nlp-embeddings:0.19
 ```
 
 Then use your favourite SQL client to connect to Trino running at http://localhost:8080
