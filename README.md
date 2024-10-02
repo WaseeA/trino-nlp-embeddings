@@ -8,6 +8,7 @@ This is a [Trino](http://trino.io/) plugin that provides a connector.
 # Quick Start
 
 To run a Docker container with the connector, run the following:
+Get your docker tag from https://hub.docker.com/repository/docker/waseedockerhub9/trino-nlp-embeddings/tags
 ```bash
 docker run \
   -d \
