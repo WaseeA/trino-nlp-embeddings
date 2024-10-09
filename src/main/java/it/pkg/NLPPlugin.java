@@ -26,4 +26,9 @@ public class NLPPlugin
     {
         return ImmutableList.of(new NLPConnectorFactory());
     }
+
+    @Override
+    public Iterable<Function> getFunctions() {
+        return List.of(new TestScalar());
+    }
 }
