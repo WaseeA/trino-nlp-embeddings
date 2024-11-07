@@ -33,8 +33,8 @@ public class NLPPlugin
 
     @ScalarFunction("square")
     @Description("Returns the square of a number")
-    @SqlType(DoubleType.NAME)
-    public static double square(@SqlType(DoubleType.NAME) double value)
+    @SqlType("double")
+    public static double square(@SqlType("double") double value)
     {
         return value * value;
     }
