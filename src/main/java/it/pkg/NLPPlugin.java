@@ -17,6 +17,10 @@ package it.pkg;
 import com.google.common.collect.ImmutableList;
 import io.trino.spi.Plugin;
 import io.trino.spi.connector.ConnectorFactory;
+import io.trino.spi.function.Description;
+import io.trino.spi.function.ScalarFunction;
+import io.trino.spi.function.SqlType;
+import io.trino.spi.type.DoubleType;
 
 public class NLPPlugin
         implements Plugin
@@ -27,8 +31,10 @@ public class NLPPlugin
         return ImmutableList.of(new NLPConnectorFactory());
     }
 
-    @Override
-    public Iterable<Function> getFunctions() {
-        return List.of(new TestScalar());
+    @ScalarFunction("square")
+    @Description("Returns the square of a number")
+    @SqlType(DoubleType.NAME)
+    public static double square(@SqlType(DoubleType.NAME) double value) {
+        return value * value;
     }
 }
