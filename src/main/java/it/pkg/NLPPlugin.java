@@ -15,8 +15,8 @@
 package it.pkg;
 
 import java.util.Set;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 import io.trino.spi.Plugin;
 import io.trino.spi.connector.ConnectorFactory;
 
@@ -29,7 +29,7 @@ public class NLPPlugin implements Plugin
     }
 
     @Override
-    public Set<Class<?>> getFunctions() 
+    public Set<Class<?>> getFunctions()
     {
         return ImmutableSet.of(NLPFunctions.class);
     }
