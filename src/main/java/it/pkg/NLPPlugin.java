@@ -15,12 +15,12 @@
 package it.pkg;
 
 import java.util.Set;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList;
 import io.trino.spi.Plugin;
 import io.trino.spi.connector.ConnectorFactory;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 
-public class NLPPlugin implements Plugin 
+public class NLPPlugin implements Plugin
 {
     @Override
     public Iterable<ConnectorFactory> getConnectorFactories()

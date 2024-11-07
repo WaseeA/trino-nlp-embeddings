@@ -20,11 +20,15 @@ import io.trino.spi.function.SqlType;
 
 public class NLPFunctions
 {
+    private NLPFunctions() 
+    {
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+    }
 
     @ScalarFunction("square")
     @Description("Returns the square of a number")
     @SqlType("double")
-    public static double square(@SqlType("double") double value)
+    public static double square(@SqlType("double") double value) 
     {
         return value * value;
     }
