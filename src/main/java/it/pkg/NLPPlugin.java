@@ -20,7 +20,6 @@ import io.trino.spi.connector.ConnectorFactory;
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
-import io.trino.spi.type.DoubleType;
 
 public class NLPPlugin
         implements Plugin
