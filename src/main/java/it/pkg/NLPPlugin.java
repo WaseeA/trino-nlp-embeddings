@@ -20,7 +20,7 @@ import com.google.common.collect.ImmutableSet;
 import io.trino.spi.Plugin;
 import io.trino.spi.connector.ConnectorFactory;
 
-public class NLPPlugin 
+public class NLPPlugin
         implements Plugin
 {
     @Override
