@@ -14,12 +14,12 @@
 
 package it.pkg;
 
-import java.util.Set;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import io.trino.spi.Plugin;
 import io.trino.spi.connector.ConnectorFactory;
+
+import java.util.Set;
 
 public class NLPPlugin
         implements Plugin
