@@ -34,7 +34,8 @@ public class NLPPlugin
     @ScalarFunction("square")
     @Description("Returns the square of a number")
     @SqlType(DoubleType.NAME)
-    public static double square(@SqlType(DoubleType.NAME) double value) {
+    public static double square(@SqlType(DoubleType.NAME) double value)
+    {
         return value * value;
     }
 }
