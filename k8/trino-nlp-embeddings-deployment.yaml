@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trino-nlp-embeddings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trino-nlp-embeddings
+  template:
+    metadata:
+      labels:
+        app: trino-nlp-embeddings
+    spec:
+      containers:
+      - name: trino-nlp-embeddings
+        image: waseedockerhub9/trino-nlp-embeddings:0.25
+        ports:
+        - containerPort: 8080
