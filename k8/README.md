@@ -19,3 +19,5 @@ kubectl port-forward service/trino-nlp-embeddings 8080:8080
 
 ### now access your trino service through your browser
 http://localhost:8080
+
+### to make a query

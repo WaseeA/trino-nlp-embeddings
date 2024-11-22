@@ -14,9 +14,12 @@
 
 package it.pkg;
 
+import io.airlift.slice.Slice;
+import io.airlift.slice.Slices;
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
+import io.trino.spi.type.StandardTypes;
 
 public class NLPFunctions
 {
@@ -31,5 +34,13 @@ public class NLPFunctions
     public static double square(@SqlType("double") double value)
     {
         return value * value;
+    }
+
+    @ScalarFunction("run_py")
+    @Description("Runs the Python Script")
+    @SqlType(StandardTypes.VARCHAR)
+    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath)
+    {
+        return Slices.utf8Slice("Helo there!");
     }
 }
