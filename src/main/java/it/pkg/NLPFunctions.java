@@ -52,7 +52,7 @@ public class NLPFunctions
             String[] command = {"python3", scriptPath.toStringUtf8()};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
-            
+
             // See if the script exists
             File scriptFile = new File(scriptPath.toStringUtf8());
             if (!scriptFile.exists()) {
