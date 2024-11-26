@@ -14,6 +14,8 @@
 
 package it.pkg;
 
+import io.airlift.slice.Slice;
+import io.airlift.slice.Slices;
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
@@ -40,13 +42,13 @@ public class NLPFunctions
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
-    public static String run_py(@SqlType(StandardTypes.VARCHAR) String scriptPath)
+    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath)
     {
         StringBuilder output = new StringBuilder();
         StringBuilder errors = new StringBuilder();
 
         try {
-            String[] command = {"python3", scriptPath};
+            String[] command = {"python3", scriptPath.toStringUtf8()};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 
@@ -66,14 +68,14 @@ public class NLPFunctions
             // Wait for the process to complete
             int exitCode = process.waitFor();
             if (exitCode != 0) {
-                return "Error: Python script exited with code " + exitCode + "\n" + errors.toString();
+                return Slices.utf8Slice(String.valueOf(exitCode));
             }
             System.out.println("Python script exited with code: " + exitCode);
         }
         catch (Exception e) {
-            return "Exception occurred: " + e.getMessage();
+            return Slices.utf8Slice(String.valueOf(e));
         }
 
-        return output.toString().trim();
+        return Slices.utf8Slice(output.toString().trim());
     }
 }
