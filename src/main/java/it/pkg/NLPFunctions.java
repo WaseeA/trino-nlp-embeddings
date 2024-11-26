@@ -22,6 +22,7 @@ import io.trino.spi.function.SqlType;
 import io.trino.spi.type.StandardTypes;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 
 public class NLPFunctions
@@ -51,6 +52,12 @@ public class NLPFunctions
             String[] command = {"python3", scriptPath.toStringUtf8()};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
+            
+            // See if the script exists
+            File scriptFile = new File(scriptPath.toStringUtf8());
+            if (!scriptFile.exists()) {
+                return Slices.utf8Slice("Error: File not found - " + scriptPath.toStringUtf8());
+            }
 
             // Read the output of the Python script
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
