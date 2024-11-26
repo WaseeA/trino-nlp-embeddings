@@ -14,13 +14,13 @@
 
 package it.pkg;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
 import io.trino.spi.type.StandardTypes;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class NLPFunctions
 {
