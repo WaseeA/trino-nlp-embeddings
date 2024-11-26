@@ -56,7 +56,8 @@ public class NLPFunctions
             // See if the script exists
             File scriptFile = new File(scriptPath.toStringUtf8());
             if (!scriptFile.exists()) {
-                return Slices.utf8Slice("Error: File not found - " + scriptPath.toStringUtf8());
+                return Slices.utf8Slice("Working Directory: " + System.getProperty("user.dir"));
+                // return Slices.utf8Slice("Error: File not found - " + scriptPath.toStringUtf8());
             }
 
             // Read the output of the Python script
