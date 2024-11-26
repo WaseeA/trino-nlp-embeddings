@@ -103,6 +103,9 @@
     <module name="SuppressWarningsFilter" />
 
     <module name="TreeWalker">
+        <!-- exception for python files -->
+        <property name="fileExtensions" value="java"/>
+
         <module name="SuppressWarningsHolder" />
 
         <module name="SuppressionXpathSingleFilter">
