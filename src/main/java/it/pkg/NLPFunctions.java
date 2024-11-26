@@ -40,37 +40,40 @@ public class NLPFunctions
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
-    public static void run_py(@SqlType(StandardTypes.VARCHAR) String scriptPath)
+    public static String run_py(@SqlType(StandardTypes.VARCHAR) String scriptPath)
     {
+        StringBuilder output = new StringBuilder();
+        StringBuilder errors = new StringBuilder();
+
         try {
-            // Arguments to the script (if any)
             String[] command = {"python3", scriptPath};
-
-            // Create a ProcessBuilder
             ProcessBuilder processBuilder = new ProcessBuilder(command);
-
-            // Start the process
             Process process = processBuilder.start();
 
             // Read the output of the Python script
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                output.append(line);
             }
 
             // Read any errors
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             while ((line = errorReader.readLine()) != null) {
-                System.err.println(line);
+                errors.append(line);
             }
 
             // Wait for the process to complete
             int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                return "Error: Python script exited with code " + exitCode + "\n" + errors.toString();
+            }
             System.out.println("Python script exited with code: " + exitCode);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            return "Exception occurred: " + e.getMessage();
         }
+
+        return output.toString().trim();
     }
 }
