@@ -11,6 +11,4 @@ ADD catalog/config.properties /usr/lib/trino/etc/config.properties
 # Create the directory for Python scripts inside the container
 RUN mkdir -p /data/trino/src/py_scripts
 COPY src/py_scripts/script.py /data/trino/src/py_scripts/
-USER ROOT
-RUN chmod +x /data/trino/src/py_scripts/script.py
-USER trino
+# RUN chmod +x /data/trino/src/py_scripts/script.py
