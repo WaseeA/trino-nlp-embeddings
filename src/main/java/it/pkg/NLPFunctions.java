@@ -14,6 +14,9 @@
 
 package it.pkg;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
 import io.trino.spi.function.Description;
@@ -39,8 +42,40 @@ public class NLPFunctions
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath)
+    public static void run_py(@SqlType(StandardTypes.VARCHAR) String scriptPath)
     {
-        return Slices.utf8Slice("Helo there!");
+        try 
+        {
+            // Arguments to the script (if any)
+            String[] command = {"python3", scriptPath};
+
+            // Create a ProcessBuilder
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Read the output of the Python script
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            // Read any errors
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            while ((line = errorReader.readLine()) != null) {
+                System.err.println(line);
+            }
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+            System.out.println("Python script exited with code: " + exitCode);
+
+        }
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+        }
     }
 }
