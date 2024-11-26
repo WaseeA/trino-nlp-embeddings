@@ -17,8 +17,6 @@ package it.pkg;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import io.airlift.slice.Slice;
-import io.airlift.slice.Slices;
 import io.trino.spi.function.Description;
 import io.trino.spi.function.ScalarFunction;
 import io.trino.spi.function.SqlType;
@@ -44,8 +42,7 @@ public class NLPFunctions
     @SqlType(StandardTypes.VARCHAR)
     public static void run_py(@SqlType(StandardTypes.VARCHAR) String scriptPath)
     {
-        try 
-        {
+        try {
             // Arguments to the script (if any)
             String[] command = {"python3", scriptPath};
 
@@ -71,10 +68,8 @@ public class NLPFunctions
             // Wait for the process to complete
             int exitCode = process.waitFor();
             System.out.println("Python script exited with code: " + exitCode);
-
         }
-        catch (Exception e) 
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
