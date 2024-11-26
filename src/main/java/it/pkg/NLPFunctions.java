@@ -81,7 +81,7 @@ public class NLPFunctions
             System.out.println("Python script exited with code: " + exitCode);
         }
         catch (Exception e) {
-            return Slices.utf8Slice(String.valueOf(e));
+            return Slices.utf8Slice("exception: " + String.valueOf(e));
         }
 
         return Slices.utf8Slice(output.toString().trim());
