@@ -68,7 +68,7 @@ public class NLPFunctions
             // Wait for the process to complete
             int exitCode = process.waitFor();
             if (exitCode != 0) {
-                return Slices.utf8Slice(String.valueOf(exitCode));
+                return Slices.utf8Slice("Exit Code: " + String.valueOf(exitCode));
             }
             System.out.println("Python script exited with code: " + exitCode);
         }
