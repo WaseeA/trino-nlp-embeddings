@@ -43,7 +43,7 @@ public class NLPFunctions
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath, Slice query)
+    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath, @SqlType(StandardTypes.VARCHAR) Slice query)
     {
         StringBuilder output = new StringBuilder();
         StringBuilder errors = new StringBuilder();
