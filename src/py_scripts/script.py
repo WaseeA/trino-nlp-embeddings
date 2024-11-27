@@ -12,7 +12,16 @@
 # limitations under the License.
 #
 
-# SELECT run_py('/path/to/your/script.py') AS result;
-# SELECT square(4);
+import sys
 
-print("Hello World")
+if __name__ == "__main__":
+    # The query is passed as the second argument
+    if len(sys.argv) < 2:
+        print("Error: Query argument is missing")
+    else:
+        query = sys.argv[1]
+        print(f"Received query: {query}")
+        # Process the query here
+
+# SELECT run_py('/data/trino/src/py_scripts/script.py') AS result;
+# SELECT square(4);

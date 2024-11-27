@@ -43,13 +43,13 @@ public class NLPFunctions
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
-    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath)
+    public static Slice run_py(@SqlType(StandardTypes.VARCHAR) Slice scriptPath, Slice query)
     {
         StringBuilder output = new StringBuilder();
         StringBuilder errors = new StringBuilder();
 
         try {
-            String[] command = {"python3", scriptPath.toStringUtf8()};
+            String[] command = {"python3", scriptPath.toStringUtf8(), query.toStringUtf8()};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 
