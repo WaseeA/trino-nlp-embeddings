@@ -16,6 +16,7 @@ COPY --chmod=0755 src/py_scripts/requirements.txt /data/trino/src/py_scripts/
 
 # install dependencies
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python3
+ENV PATH="/home/trino/.local/bin:${PATH}"
 RUN pip install -r /data/trino/src/py_scripts/requirements.txt
 
 # debugging
