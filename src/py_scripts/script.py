@@ -14,15 +14,10 @@
 
 import sys
 import torch
-from transformers import BertTokenizer,BertModel
 
 def sentence_to_embeddings(query):
     # unpack the models
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased') 
-    model = BertModel.from_pretrained("bert-base-uncased")
-
-    tokens = tokenizer.tokenize(query)
-    print(tokens)
+    print(query)
 
 if __name__ == "__main__":
     # The query is passed as the second argument
