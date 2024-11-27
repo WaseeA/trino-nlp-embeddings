@@ -16,7 +16,7 @@ COPY --chmod=0755 src/py_scripts/requirements.txt /data/trino/src/py_scripts/
 
 # install dependencies
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python3
-RUN pip3 install -r /data/trino/src/py_scripts/requirements.txt
+RUN pip install -r /data/trino/src/py_scripts/requirements.txt
 
 # debugging
 RUN python3 -c "import torch; print('PyTorch version:', torch.__version__)"
