@@ -13,6 +13,16 @@
 #
 
 import sys
+import torch
+from transformers import BertTokenizer,BertModel
+
+def sentence_to_embeddings(query):
+    # unpack the models
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased') 
+    model = BertModel.from_pretrained("bert-base-uncased")
+
+    tokens = tokenizer.tokenize(query)
+    print(tokens)
 
 if __name__ == "__main__":
     # The query is passed as the second argument
@@ -20,8 +30,10 @@ if __name__ == "__main__":
         print("Error: Query argument is missing")
     else:
         query = sys.argv[1]
-        print(f"Received query: {query}")
-        # Process the query here
+        sentence_to_embeddings(query)
+        
+
+# models: https://huggingface.co/models?sort=downloads
 
 # SELECT run_py('/data/trino/src/py_scripts/script.py') AS result;
 # SELECT square(4);
