@@ -14,13 +14,6 @@ RUN mkdir -p /data/trino/src/py_scripts
 COPY --chmod=0755 src/py_scripts/script.py /data/trino/src/py_scripts/
 COPY --chmod=0755 src/py_scripts/requirements.txt /data/trino/src/py_scripts/
 
-# Install python
-RUN apt-get update && apt-get install -y \
-    python3 python3-pip build-essential \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-RUN pip3 install --upgrade pip
-
 # install dependencies
 RUN pip3 install -r /data/trino/src/py_scripts/requirements.txt
 
