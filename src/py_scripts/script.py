@@ -14,6 +14,7 @@
 
 import sys
 import torch
+from transformers import BertTokenizer, BertModel
 
 def sentence_to_embeddings(query):
     # unpack the models
@@ -32,3 +33,5 @@ if __name__ == "__main__":
 
 # SELECT run_py('/data/trino/src/py_scripts/script.py') AS result;
 # SELECT square(4);
+# docker exec -it trino-nlp-embeddings bash
+# docker cp src/py_scripts/requirements.txt trino-nlp-embeddings:/data/trino/src/py_scripts/requirements.txt
