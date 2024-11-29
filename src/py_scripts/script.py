@@ -18,7 +18,10 @@ from transformers import BertTokenizer, BertModel
 
 def sentence_to_embeddings(query):
     # unpack the models
-    print(query)
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    model = BertModel.from_pretrained('bert-base-uncased')
+    tokens = tokenizer.tokenize(query)
+    print(tokens)
 
 if __name__ == "__main__":
     # The query is passed as the second argument
@@ -35,3 +38,4 @@ if __name__ == "__main__":
 # SELECT square(4);
 # docker exec -it trino-nlp-embeddings bash
 # docker cp src/py_scripts/requirements.txt trino-nlp-embeddings:/data/trino/src/py_scripts/requirements.txt
+# docker cp src/py_scripts/script.py trino-nlp-embeddings:/data/trino/src/py_scripts/script.py
