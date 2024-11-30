@@ -40,6 +40,14 @@ public class NLPFunctions
         return value * value;
     }
 
+    @ScalarFunction("mutiply")
+    @Description("Returns the multiplication of 2 numbers")
+    @SqlType("double")
+    public static double mutiply(@SqlType("double") double value1, @SqlType("double") double value2)
+    {
+        return value1 * value2;
+    }
+
     @ScalarFunction("run_py")
     @Description("Runs the Python Script")
     @SqlType(StandardTypes.VARCHAR)
