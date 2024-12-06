@@ -20,7 +20,7 @@ from sentence_transformers import SentenceTransformer
 
 # Define database connection parameters
 DB_CONFIG = {
-    "host": "13.50.108.208",
+    "host": "13.50.106.58",
     "database": "test",
     "user": "test",
     "password": "test",
