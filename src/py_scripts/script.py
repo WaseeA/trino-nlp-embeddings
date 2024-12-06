@@ -15,18 +15,28 @@
 import sys
 import torch
 from transformers import BertTokenizer, BertModel
+from sentence_transformers import SentenceTransformer
 
 def sentence_to_embeddings(query):
     # unpack the models
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertModel.from_pretrained('bert-base-uncased')
-    tokens = tokenizer.tokenize(query)
-    print(tokens)
+    model = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
+    query_embedding = model.encode("How big is London")
+    print(query_embedding)
+    
+    # passage_embeddings = model.encode([
+    #     "London is known for its financial district",
+    #     "London has 9,787,426 inhabitants at the 2011 census",
+    #     "The United Kingdom is the fourth largest exporter of goods in the world",
+    # ])
+
+    # similarity = model.similarity(query_embedding, passage_embeddings)
+    # print(similarity)
+    
 
 if __name__ == "__main__":
     # The query is passed as the second argument
     if len(sys.argv) < 2:
-        print("Error: Query argument is missing")
+        print("Usage: python script.py <arg1>")
     else:
         query = sys.argv[1]
         sentence_to_embeddings(query)
