@@ -14,32 +14,45 @@
 
 import sys
 import torch
+import psycopg2
 from transformers import BertTokenizer, BertModel
 from sentence_transformers import SentenceTransformer
 
-def sentence_to_embeddings(query):
-    # unpack the models
-    model = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
-    query_embedding = model.encode("How big is London")
-    print(query_embedding)
-    
-    # passage_embeddings = model.encode([
-    #     "London is known for its financial district",
-    #     "London has 9,787,426 inhabitants at the 2011 census",
-    #     "The United Kingdom is the fourth largest exporter of goods in the world",
-    # ])
+# Define database connection parameters
+DB_CONFIG = {
+    "host": "13.50.108.208",
+    "database": "test",
+    "user": "test",
+    "password": "test",
+}
 
-    # similarity = model.similarity(query_embedding, passage_embeddings)
-    # print(similarity)
-    
+def sentence_to_embeddings(model, query):
+    return model.encode(query)
 
+def connect_db():
+    connection = None
+    cursor = None
+
+    try:
+        connection = psycopg2.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        print("connected")
+    except Exception as e:
+        print(f"Connection Failed: {e}")
+    
+    if cursor: cursor.close()
+    if connection: conn.close()
+    
 if __name__ == "__main__":
     # The query is passed as the second argument
     if len(sys.argv) < 2:
-        print("Usage: python script.py <arg1>")
+        print("Usage: python script.py \"<query string>\"")
     else:
+        model = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
         query = sys.argv[1]
-        sentence_to_embeddings(query)
+        embeddings = sentence_to_embeddings(model, query)
+        connect_db()
+
         
 
 # models: https://huggingface.co/models?sort=downloads
