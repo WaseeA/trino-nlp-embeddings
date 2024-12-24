@@ -15,6 +15,7 @@
 import sys
 import torch
 import psycopg2
+import numpy as np
 from transformers import BertTokenizer, BertModel
 from sentence_transformers import SentenceTransformer
 
@@ -35,13 +36,20 @@ def connect_db():
 
     try:
         connection = psycopg2.connect(**DB_CONFIG)
-        cursor = conn.cursor()
-        print("connected")
+        return connection
     except Exception as e:
         print(f"Connection Failed: {e}")
-    
-    if cursor: cursor.close()
-    if connection: conn.close()
+        return None
+
+def fetch_embeddings_from_db(connection):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT id, embedding FROM embeddings;")
+            rows = cursor.fetchall()
+            return [(row[0], np.array(row[1])) for row in rows]
+    except Exception as e:
+        print(f"Error fetching embeddings: {e}")
+        return []
     
 if __name__ == "__main__":
     # The query is passed as the second argument
@@ -51,7 +59,9 @@ if __name__ == "__main__":
         model = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
         query = sys.argv[1]
         embeddings = sentence_to_embeddings(model, query)
-        connect_db()
+        connection = connect_db()
+        if (connection):
+            connection.close()
 
         
 
@@ -62,3 +72,4 @@ if __name__ == "__main__":
 # docker exec -it trino-nlp-embeddings bash
 # docker cp src/py_scripts/requirements.txt trino-nlp-embeddings:/data/trino/src/py_scripts/requirements.txt
 # docker cp src/py_scripts/script.py trino-nlp-embeddings:/data/trino/src/py_scripts/script.py
+# .\Scripts\python .\script.py

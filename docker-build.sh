@@ -15,6 +15,7 @@ echo "Using VERSION: $VERSION"
 
 TAG=waseedockerhub9/trino-nlp-embeddings:$VERSION
 
+# FOR DEPLOYMENT
 docker buildx build \
     --platform linux/amd64 \
     -t "$TAG" \
@@ -22,3 +23,11 @@ docker buildx build \
     --build-arg VERSION="$VERSION" \
     --push \
     .
+
+# FOR LOCAL TESTING
+# docker buildx build \
+#     -t "$TAG" \
+#     --build-arg TRINO_VERSION="$TRINO_VERSION" \
+#     --build-arg VERSION="$VERSION" \
+#     --load \
+#     .
