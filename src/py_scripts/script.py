@@ -21,10 +21,10 @@ from sentence_transformers import SentenceTransformer
 
 # Define database connection parameters
 DB_CONFIG = {
-    "host": "13.50.106.58",
+    "host": "localhost",
     "database": "test",
-    "user": "test",
-    "password": "test",
+    "user": "some-postgres",
+    "password": "password",
 }
 
 def sentence_to_embeddings(model, query):
@@ -61,6 +61,7 @@ if __name__ == "__main__":
         embeddings = sentence_to_embeddings(model, query)
         connection = connect_db()
         if (connection):
+            print("connected")
             connection.close()
 
         
