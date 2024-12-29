@@ -15,7 +15,9 @@ COPY --chmod=0755 src/py_scripts/script.py /data/trino/src/py_scripts/
 COPY --chmod=0755 src/py_scripts/requirements.txt /data/trino/src/py_scripts/
 
 # install dependencies
-# postgresql
+# postgresql and gzip
+RUN curl -o /usr/bin/gzip https://busybox.net/downloads/binaries/1.21.1/busybox-x86_64 && \
+    chmod +x /usr/bin/gzip
 RUN curl -o /tmp/postgresql.tar.gz https://ftp.postgresql.org/pub/source/v15.3/postgresql-15.3.tar.gz && \
     tar -xzf /tmp/postgresql.tar.gz -C /tmp && \
     cd /tmp/postgresql-15.3 && \
