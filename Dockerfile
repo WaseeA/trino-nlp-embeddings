@@ -15,6 +15,14 @@ COPY --chmod=0755 src/py_scripts/script.py /data/trino/src/py_scripts/
 COPY --chmod=0755 src/py_scripts/requirements.txt /data/trino/src/py_scripts/
 
 # install dependencies
+# postgresql
+RUN curl -o /tmp/postgresql.tar.gz https://ftp.postgresql.org/pub/source/v15.3/postgresql-15.3.tar.gz && \
+    tar -xzf /tmp/postgresql.tar.gz -C /tmp && \
+    cd /tmp/postgresql-15.3 && \
+    ./configure && make && make install && \
+    rm -rf /tmp/postgresql*
+
+# pip
 RUN curl -sSL https://bootstrap.pypa.io/get-pip.py | python3
 ENV PATH="/home/trino/.local/bin:${PATH}"
 RUN pip install -r /data/trino/src/py_scripts/requirements.txt
