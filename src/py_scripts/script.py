@@ -13,19 +13,23 @@
 #
 
 import sys
-import torch
+# import torch
 import psycopg2
-import numpy as np
+# import numpy as np
 from transformers import BertTokenizer, BertModel
 from sentence_transformers import SentenceTransformer
+from scipy.spatial.distance import cosine
 
 # Define database connection parameters
 DB_CONFIG = {
     "host": "localhost",
-    "database": "test",
-    "user": "some-postgres",
+    "port": "5432",
+    "database": "postgres",
+    "user": "postgres",
     "password": "password",
 }
+
+MODEL = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
 def sentence_to_embeddings(model, query):
     return model.encode(query)
@@ -44,33 +48,74 @@ def connect_db():
 def fetch_embeddings_from_db(connection):
     try:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT id, embedding FROM embeddings;")
+            cursor.execute("SELECT * from pdf_embeddings;")
             rows = cursor.fetchall()
-            return [(row[0], np.array(row[1])) for row in rows]
+            return rows
     except Exception as e:
         print(f"Error fetching embeddings: {e}")
         return []
+
+def find_most_similar_entry(to_find, embeddings_list):
+    most_similar = None
+    highest_similarity_so_far = -1
+
+    for entry in embeddings_list:
+        vector = entry[3]
+        
+        print(sentence_to_embeddings(MODEL, entry[1]))
+        
+        # similarity = 1 - cosine(embedding_to_find, vector)
+        # if similarity > highest_similarity_so_far:
+        #     highest_similarity_so_far = similarity
+        #     most_similar = entry
     
+    return most_similar
+
+# Function to insert embeddings into the database
+def insert_embedding_into_db(connection, id, vector, text, page_number):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO pdf_embeddings (id, vector, text, page_number) VALUES (%s, %s, %s, %s)",
+                (id, vector, text, page_number)
+            )
+        connection.commit()
+    except Exception as e:
+        print(f"Error inserting embeddings: {e}")
+
+def insert_sample_data():
+    connection = connect_db()
+    if (connection):
+        given_embeddings = fetch_embeddings_from_db(connection)
+        print(given_embeddings)
+
+        sample_data = [
+            {"id": "1", "text": "Hello the weather is lovely today.", "page_number": 1},
+            {"id": "2", "text": "Deep learning and neural networks is important.", "page_number": 2},
+            {"id": "3", "text": "The healthcare system could use some work.", "page_number": 3},
+        ]
+
+        for data in sample_data:
+            # Generate embeddings for each text
+            embedding = model.encode(data["text"]).tolist()  # Convert to Python list
+            insert_embedding_into_db(
+                connection,
+                data["id"],
+                embedding,
+                data["text"],
+                data["page_number"],
+            )
+        connection.close()
+
 if __name__ == "__main__":
     # The query is passed as the second argument
     if len(sys.argv) < 2:
         print("Usage: python script.py \"<query string>\"")
     else:
-        model = SentenceTransformer("multi-qa-mpnet-base-cos-v1")
         query = sys.argv[1]
-        embeddings = sentence_to_embeddings(model, query)
+        embedding_to_find = sentence_to_embeddings(MODEL, query)
         connection = connect_db()
         if (connection):
-            print("connected")
-            connection.close()
-
-        
-
-# models: https://huggingface.co/models?sort=downloads
-
-# SELECT run_py('/data/trino/src/py_scripts/script.py') AS result;
-# SELECT square(4);
-# docker exec -it trino-nlp-embeddings bash
-# docker cp src/py_scripts/requirements.txt trino-nlp-embeddings:/data/trino/src/py_scripts/requirements.txt
-# docker cp src/py_scripts/script.py trino-nlp-embeddings:/data/trino/src/py_scripts/script.py
-# .\Scripts\python .\script.py
+            given_embeddings = fetch_embeddings_from_db(connection)
+            print(given_embeddings)
+            
