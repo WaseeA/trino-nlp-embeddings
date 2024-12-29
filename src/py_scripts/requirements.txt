@@ -3,5 +3,5 @@
 # -f https://download.pytorch.org/whl/cpu/torch_stable.html
 # git+https://github.com/huggingface/transformers
 sentence-transformers==3.3.1
-psycopg2==2.9.10
-scipy==1.14.1
+psycopg2-binary==2.9.10
+scipy==1.13.1
