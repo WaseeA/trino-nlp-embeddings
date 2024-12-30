@@ -12,8 +12,13 @@
 # limitations under the License.
 #
 
+# USAGE: .\Scripts\python .\script.py "lovely weather I must say"
+
 import sys
 import psycopg2
+import numpy as np
+import json
+from pprint import pprint
 from transformers import BertTokenizer, BertModel
 from sentence_transformers import SentenceTransformer
 from scipy.spatial.distance import cosine
@@ -57,15 +62,18 @@ def find_most_similar_entry(to_find, embeddings_list):
     most_similar = None
     highest_similarity_so_far = -1
 
-    for entry in embeddings_list:
-        vector = entry[3]
-        
-        print(sentence_to_embeddings(MODEL, entry[1]))
-        
-        # similarity = 1 - cosine(embedding_to_find, vector)
-        # if similarity > highest_similarity_so_far:
-        #     highest_similarity_so_far = similarity
-        #     most_similar = entry
+    for entry in given_embeddings:
+        entry_id, vector, text, page_number = entry
+        vector_list = json.loads(vector)
+        similarity = 1 - cosine(embedding_to_find, vector_list)
+        if similarity > highest_similarity_so_far:
+            highest_similarity_so_far = similarity
+            most_similar = {
+                "id": entry_id,
+                "text": text,
+                "page_number": page_number,
+                "similarity": similarity,
+            }
     
     return most_similar
 
@@ -95,7 +103,7 @@ def insert_sample_data():
 
         for data in sample_data:
             # Generate embeddings for each text
-            embedding = model.encode(data["text"]).tolist()  # Convert to Python list
+            embedding = MODEL.encode(data["text"]).tolist()  # Convert to Python list
             insert_embedding_into_db(
                 connection,
                 data["id"],
@@ -115,5 +123,5 @@ if __name__ == "__main__":
         connection = connect_db()
         if (connection):
             given_embeddings = fetch_embeddings_from_db(connection)
-            print(given_embeddings)
+            print(find_most_similar_entry(embedding_to_find, given_embeddings))
             
