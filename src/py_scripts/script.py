@@ -13,16 +13,14 @@
 #
 
 import sys
-# import torch
 import psycopg2
-# import numpy as np
 from transformers import BertTokenizer, BertModel
 from sentence_transformers import SentenceTransformer
 from scipy.spatial.distance import cosine
 
 # Define database connection parameters
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "some-postgres", # same name as your docker container running your postgres instance
     "port": "5432",
     "database": "postgres",
     "user": "postgres",
